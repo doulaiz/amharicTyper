@@ -1,7 +1,7 @@
 # AmharicTyper
 
 Please look at the practical demo page here
-[link](https://doulaize.github.io/amharic-typer/).
+[link](https://doulaize.github.io/AmharicTyper/).
 
 <h1>Amharic Typer</h1>
 
