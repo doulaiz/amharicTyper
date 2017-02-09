@@ -232,7 +232,7 @@
                     return
                 } else if (phonemList.length > 1) {
                     for (var i = 0; i < phonemList.length; i++) {
-                        getPossibleFidels(listOfPhonems, res.concat(phonemList[i]), finalRes)
+                        getPossibleFidels(listOfPhonems.slice(), res.concat(phonemList[i]), finalRes)
                     }
                     return
                 } else {
