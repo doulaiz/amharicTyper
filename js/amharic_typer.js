@@ -4,7 +4,7 @@
         var consonantsE = ["B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z"];
         var voyelE = ["A", "E", "I", "O", "U"];
 
-        var doubleConsonantsE = ["CH", "SH", "TS"];
+        var doubleConsonantsE = ["CH", "GN", "SH", "TS"];
         var singleW = ["BWA", "CWA", "DWA", "FWA", "GWA", "HWA", "KWA", "LWA", "MWA", "QWA", "RWA", "SWA", "TWA", "VWA", "ZWA"];
         var doubleW = ["CHWA", "SHWA", "TSWA"];
 
@@ -71,7 +71,7 @@
         translatorMap["MU"] = ["ሙ"];
         translatorMap["M"] = ["ም"];
         translatorMap["NA"] = ["ና", "ኛ"];
-        translatorMap["NE"] = ["ነ", "ኔ", "ኘ"];
+        translatorMap["NE"] = ["ነ", "ኔ", "ኘ", "ኜ"];
         translatorMap["NI"] = ["ን", "ኒ"];
         translatorMap["NO"] = ["ኖ", "ኞ"];
         translatorMap["NU"] = ["ኑ", "ኙ"];
@@ -159,6 +159,12 @@
         translatorMap["TSO"] = ["ፆ"];
         translatorMap["TSU"] = ["ፁ"];
         translatorMap["TS"] = ["ፅ"];
+        translatorMap["GNA"] = ["ኛ"];
+        translatorMap["GNE"] = ["ኘ", "ኜ"];
+        translatorMap["GNI"] = ["ኒ"];
+        translatorMap["GNO"] = [ "ኞ"];
+        translatorMap["GNU"] = ["ኙ"];
+        translatorMap["GN"] = ["ኝ"];
         translatorMap["BWA"] = ["ቧ"];
         translatorMap["CWA"] = ["ቿ", "ጧ"];
         translatorMap["DWA"] = ["ዷ"];
@@ -674,6 +680,10 @@
             }
             else if (key == 13) {
                 $(this).eventManager($global_fsm_InputEventsEnum.TYPE_ENTER);
+            }
+            else if (key == 8) {
+                //nothing;
+		// On firefox, the backspace event is raised twice
             }
             else {
                 $(this).eventManager($global_fsm_InputEventsEnum.TYPE_OTHER);

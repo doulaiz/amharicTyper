@@ -7,7 +7,7 @@ Please look at the practical demo page here
 
 This is a Jquery plugin that implements an Amharic/Giz plugin for all the normal input. 
 
-Allowing a user to write in fidels in amharic (or other Ethiopian languages) are sometimes hard to implement. Some browsers plugins exist but they require some initial steps by the end user. With this plugin, the 
+Allowing a user to write in fidels in amharic (or other Ethiopian languages) are sometimes hard to implement. Some browsers plugins exist but they require some initial steps by the end user. With this plugin, the user can simply write phonetically and see its text change into fidels.
 
 <h2>Main Features</h2>
 1. just add the class "amharic-typer" to your input, and you are good to go.
