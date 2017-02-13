@@ -1,281 +1,325 @@
 (function ($) {
-    
 
-        var consonantsE = ["B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z"];
-        var voyelE = ["A", "E", "I", "O", "U"];
+    var consonants = ["B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z"];
+    var vowels = ["A", "E", "I", "O", "U"];
 
-        var doubleConsonantsE = ["CH", "GN", "SH", "TS"];
-        var singleW = ["BWA", "CWA", "DWA", "FWA", "GWA", "HWA", "KWA", "LWA", "MWA", "QWA", "RWA", "SWA", "TWA", "VWA", "ZWA"];
-        var doubleW = ["CHWA", "SHWA", "TSWA"];
+    var doubleConsonants = ["CH", "GN", "SH", "TS", "ZH"];
 
-        var translatorMap = {};
+    var singleW = ["BWA", "CWA", "DWA", "FWA", "GWA", "HWA", "KWA", "LWA", "MWA", "QWA", "RWA", "SWA", "TWA", "VWA", "ZWA"];
+    var doubleW = ["CHWA", "SHWA", "TSWA"];
 
-        translatorMap["BA"] = ["ባ"];
-        translatorMap["BE"] = ["በ", "ቤ"];
-        translatorMap["BI"] = ["ብ", "ቢ"];
-        translatorMap["BO"] = ["ቦ"];
-        translatorMap["BU"] = ["ቡ"];
-        translatorMap["B"] = ["ብ", "በ"];
-        translatorMap["CA"] = ["ቻ", "ጫ"];
-        translatorMap["CE"] = ["ጨ", "ቼ", "ቸ", "ጬ"];
-        translatorMap["CI"] = ["ጭ", "ቺ", "ጪ"];
-        translatorMap["CO"] = ["ጮ"];
-        translatorMap["CU"] = ["ቹ", "ጩ"];
-        translatorMap["C"] = ["ች", "ጭ"];
-        translatorMap["DA"] = ["ዳ", "ደ"];
-        translatorMap["DE"] = ["ደ", "ዴ"];
-        translatorMap["DI"] = ["ድ", "ዲ"];
-        translatorMap["DO"] = ["ዶ"];
-        translatorMap["DU"] = ["ዱ"];
-        translatorMap["D"] = ["ድ"];
-        translatorMap["FA"] = ["ፋ"];
-        translatorMap["FE"] = ["ፈ", "ፌ"];
-        translatorMap["FI"] = ["ፍ", "ፊ"];
-        translatorMap["FO"] = ["ፎ"];
-        translatorMap["FU"] = ["ፉ"];
-        translatorMap["F"] = ["ፍ"];
-        translatorMap["GA"] = ["ጋ"];
-        translatorMap["GE"] = ["ገ", "ጌ"];
-        translatorMap["GI"] = ["ግ", "ጊ"];
-        translatorMap["GO"] = ["ጎ"];
-        translatorMap["GU"] = ["ጉ"];
-        translatorMap["G"] = ["ግ"];
-        translatorMap["HA"] = ["ሀ", "ሃ", "ሐ", "ኃ", "ሓ", "ኀ"];
-        translatorMap["HE"] = ["ሀ", "ሐ", "ሄ", "ሔ", "ኄ"];
-        translatorMap["HI"] = ["ህ", "ሕ", "ሂ"];
-        translatorMap["HO"] = ["ሆ"];
-        translatorMap["HU"] = ["ሁ"];
-        translatorMap["H"] = ["ህ", "ሕ", "ኅ"];
-        translatorMap["JA"] = ["ጃ"];
-        translatorMap["JE"] = ["ጀ", "ጄ"];
-        translatorMap["JI"] = ["ጅ", "ጂ"];
-        translatorMap["JO"] = ["ጆ"];
-        translatorMap["JU"] = ["ጁ"];
-        translatorMap["J"] = ["ጅ"];
-        translatorMap["KA"] = ["ካ", "ቃ"];
-        translatorMap["KE"] = ["ከ", "ቀ", "ቄ", "ኬ", "ኸ"];
-        translatorMap["KI"] = ["ክ", "ኪ", "ቂ"];
-        translatorMap["KO"] = ["ኮ", "ቆ"];
-        translatorMap["KU"] = ["ቁ", "ኩ"];
-        translatorMap["K"] = ["ክ", "ቅ", "ከ"];
-        translatorMap["LA"] = ["ላ"];
-        translatorMap["LE"] = ["ለ", "ሌ"];
-        translatorMap["LI"] = ["ል", "ሊ"];
-        translatorMap["LO"] = ["ሎ"];
-        translatorMap["LU"] = ["ሉ"];
-        translatorMap["L"] = ["ል", "ለ"];
-        translatorMap["MA"] = ["ማ"];
-        translatorMap["ME"] = ["መ", "ሜ"];
-        translatorMap["MI"] = ["ም", "ሚ"];
-        translatorMap["MO"] = ["ሞ"];
-        translatorMap["MU"] = ["ሙ"];
-        translatorMap["M"] = ["ም"];
-        translatorMap["NA"] = ["ና", "ኛ"];
-        translatorMap["NE"] = ["ነ", "ኔ", "ኘ", "ኜ"];
-        translatorMap["NI"] = ["ን", "ኒ"];
-        translatorMap["NO"] = ["ኖ", "ኞ"];
-        translatorMap["NU"] = ["ኑ", "ኙ"];
-        translatorMap["N"] = ["ን", "ኝ"];
-        translatorMap["PA"] = ["ፓ", "ጳ"];
-        translatorMap["PE"] = ["ፔ", "ፐ", "ጴ", "ጰ"];
-        translatorMap["PI"] = ["ፕ", "ፒ", "ጵ"];
-        translatorMap["PO"] = ["ፖ"];
-        translatorMap["PU"] = ["ፑ"];
-        translatorMap["P"] = ["ፕ", "ጵ"];
-        translatorMap["QA"] = ["ቃ"];
-        translatorMap["QE"] = ["ቀ", "ቄ"];
-        translatorMap["QI"] = ["ቂ"];
-        translatorMap["QO"] = ["ቆ"];
-        translatorMap["QU"] = ["ቁ"];
-        translatorMap["Q"] = ["ቅ"];
-        translatorMap["RA"] = ["ራ"];
-        translatorMap["RE"] = ["ረ", "ሬ"];
-        translatorMap["RI"] = ["ር", "ሪ"];
-        translatorMap["RO"] = ["ሮ"];
-        translatorMap["RU"] = ["ሩ"];
-        translatorMap["R"] = ["ር"];
-        translatorMap["SA"] = ["ሳ", "ሣ", "ጻ"];
-        translatorMap["SE"] = ["ሰ", "ሴ", "ሠ", "ጸ", "ጼ"];
-        translatorMap["SI"] = ["ስ", "ሲ", "ጽ"];
-        translatorMap["SO"] = ["ሶ", "ሦ", "ጾ"];
-        translatorMap["SU"] = ["ሱ", "ጹ", "ሡ"];
-        translatorMap["S"] = ["ስ", "ጽ", "ሥ"];
-        translatorMap["TA"] = ["ታ", "ጣ"];
-        translatorMap["TE"] = ["ተ", "ጠ", "ቴ", "ጤ"];
-        translatorMap["TI"] = ["ት", "ጥ"];
-        translatorMap["TO"] = ["ቶ", "ጦ"];
-        translatorMap["TU"] = ["ቱ", "ጡ"];
-        translatorMap["T"] = ["ት", "ጥ"];
-        translatorMap["VA"] = ["ቫ"];
-        translatorMap["VE"] = ["ቨ", "ቬ"];
-        translatorMap["VI"] = ["ቪ", "ቭ"];
-        translatorMap["VO"] = [];
-        translatorMap["VU"] = [];
-        translatorMap["V"] = ["ቭ"];
-        translatorMap["WA"] = ["ዋ"];
-        translatorMap["WE"] = ["ወ", "ዌ"];
-        translatorMap["WI"] = ["ው", "ዊ"];
-        translatorMap["WO"] = ["ዎ"];
-        translatorMap["WU"] = ["ዉ"];
-        translatorMap["W"] = ["ው"];
-        translatorMap["XA"] = ["ሻ"];
-        translatorMap["XE"] = ["ሸ", "ሼ"];
-        translatorMap["XI"] = ["ሺ"];
-        translatorMap["XO"] = ["ሾ"];
-        translatorMap["XU"] = ["ሹ"];
-        translatorMap["X"] = ["ሽ"];
-        translatorMap["YA"] = ["ያ"];
-        translatorMap["YE"] = ["የ", "ዬ"];
-        translatorMap["YI"] = ["ይ"];
-        translatorMap["YO"] = ["ዮ"];
-        translatorMap["YU"] = ["ዩ"];
-        translatorMap["Y"] = ["ይ", "የ"];
-        translatorMap["ZA"] = ["ዛ", "ዣ"];
-        translatorMap["ZE"] = ["ዘ", "ዜ", "ዤ"];
-        translatorMap["ZI"] = ["ዝ", "ዚ", "ዥ", "ዢ"];
-        translatorMap["ZO"] = ["ዞ"];
-        translatorMap["ZU"] = ["ዙ"];
-        translatorMap["Z"] = ["ዝ", "ዥ"];
-        translatorMap["A"] = ["አ", "ዓ", "ዐ"];
-        translatorMap["E"] = ["አ", "ኤ"];
-        translatorMap["I"] = ["እ", "ኢ", "ዕ"];
-        translatorMap["O"] = ["ኦ", "ዖ"];
-        translatorMap["U"] = ["ኡ", "ዑ"];
-        translatorMap["CHA"] = ["ቻ"];
-        translatorMap["CHE"] = ["ቸ", "ቼ"];
-        translatorMap["CHI"] = ["ቺ"];
-        translatorMap["CHO"] = [];
-        translatorMap["CHU"] = ["ቹ"];
-        translatorMap["CH"] = ["ች"];
-        translatorMap["SHA"] = ["ሻ"];
-        translatorMap["SHE"] = ["ሸ", "ሼ"];
-        translatorMap["SHI"] = ["ሺ"];
-        translatorMap["SHO"] = ["ሾ"];
-        translatorMap["SHU"] = ["ሹ"];
-        translatorMap["SH"] = ["ሽ"];
-        translatorMap["TSA"] = ["ፃ"];
-        translatorMap["TSE"] = ["ፀ", "ፄ"];
-        translatorMap["TSI"] = [];
-        translatorMap["TSO"] = ["ፆ"];
-        translatorMap["TSU"] = ["ፁ"];
-        translatorMap["TS"] = ["ፅ"];
-        translatorMap["GNA"] = ["ኛ"];
-        translatorMap["GNE"] = ["ኘ", "ኜ"];
-        translatorMap["GNI"] = ["ኒ"];
-        translatorMap["GNO"] = [ "ኞ"];
-        translatorMap["GNU"] = ["ኙ"];
-        translatorMap["GN"] = ["ኝ"];
-        translatorMap["BWA"] = ["ቧ"];
-        translatorMap["CWA"] = ["ቿ", "ጧ"];
-        translatorMap["DWA"] = ["ዷ"];
-        translatorMap["FWA"] = ["ፏ"];
-        translatorMap["GWA"] = ["ጓ"];
-        translatorMap["HWA"] = ["ሗ"];
-        translatorMap["KWA"] = ["ኳ", "ቋ"];
-        translatorMap["LWA"] = ["ሏ"];
-        translatorMap["MWA"] = ["ሟ"];
-        translatorMap["QWA"] = ["ቋ"];
-        translatorMap["RWA"] = ["ሯ"];
-        translatorMap["SWA"] = ["ሷ", "ሧ"];
-        translatorMap["TWA"] = ["ቷ", "ጧ"];
-        translatorMap["VWA"] = ["ቯ"];
-        translatorMap["ZWA"] = ["ዟ", "ዧ"];
-        translatorMap["CHWA"] = ["ቿ"];
-        translatorMap["SHWA"] = ["ሿ"];
-        translatorMap["TSWA"] = ["ጿ"];
+    var translatorMap = {};
+
+    translatorMap["BA"] = ["በ", "ባ"];
+    translatorMap["BE"] = ["ቤ", "በ"];
+    translatorMap["BI"] = ["ቢ", "ብ"];
+    translatorMap["BO"] = ["ቦ"];
+    translatorMap["BU"] = ["ቡ"];
+    translatorMap["B"] = ["ብ"];
+
+    translatorMap["CA"] = ["ቸ", "ጬ", "ቻ", "ጫ"];
+    translatorMap["CE"] = ["ቼ", "ጨ", "ቸ", "ጬ"];
+    translatorMap["CI"] = ["ቺ", "ጪ", "ች", "ጭ"];
+    translatorMap["CO"] = ["ቾ", "ጮ"];
+    translatorMap["CU"] = ["ቹ", "ጩ"];
+    translatorMap["C"] = ["ች", "ጭ"];
+
+    translatorMap["DA"] = ["ደ", "ዳ"];
+    translatorMap["DE"] = ["ዴ", "ደ"];
+    translatorMap["DI"] = ["ዲ", "ድ"];
+    translatorMap["DO"] = ["ዶ"];
+    translatorMap["DU"] = ["ዱ"];
+    translatorMap["D"] = ["ድ"];
+
+    translatorMap["FA"] = ["ፈ", "ፋ"];
+    translatorMap["FE"] = ["ፌ", "ፈ"];
+    translatorMap["FI"] = ["ፊ", "ፍ"];
+    translatorMap["FO"] = ["ፎ"];
+    translatorMap["FU"] = ["ፉ"];
+    translatorMap["F"] = ["ፍ"];
+
+    translatorMap["GA"] = ["ገ", "ጋ"];
+    translatorMap["GE"] = ["ጌ", "ገ"];
+    translatorMap["GI"] = ["ጊ", "ግ"];
+    translatorMap["GO"] = ["ጎ"];
+    translatorMap["GU"] = ["ጉ"];
+    translatorMap["G"] = ["ግ"];
+
+    translatorMap["HA"] = ["ሀ", "ሐ", "ሃ", "ሓ"];
+    translatorMap["HE"] = ["ሄ", "ሔ", "ሀ", "ሐ"];
+    translatorMap["HI"] = ["ህ", "ሕ", "ህ", "ሕ"];
+    translatorMap["HO"] = ["ሆ", "ሖ"];
+    translatorMap["HU"] = ["ሁ", "ሑ"];
+    translatorMap["H"] = ["ህ", "ሕ"];
+
+    translatorMap["JA"] = ["ጀ", "ጃ"];
+    translatorMap["JE"] = ["ጄ", "ጀ"];
+    translatorMap["JI"] = ["ጂ", "ጅ"];
+    translatorMap["JO"] = ["ጆ"];
+    translatorMap["JU"] = ["ጁ"];
+    translatorMap["J"] = ["ጅ"];
+
+    translatorMap["KA"] = ["ከ", "ቀ", "ካ", "ቃ"];
+    translatorMap["KE"] = ["ቄ", "ኬ", "ከ", "ቀ"];
+    translatorMap["KI"] = ["ኪ", "ቂ", "ክ", "ቅ"];
+    translatorMap["KO"] = ["ኮ", "ቆ"];
+    translatorMap["KU"] = ["ቁ", "ኩ"];
+    translatorMap["K"] = ["ክ", "ቅ"];
+
+    translatorMap["LA"] = ["ለ", "ላ"];
+    translatorMap["LE"] = ["ሌ", "ለ"];
+    translatorMap["LI"] = ["ሊ", "ል"];
+    translatorMap["LO"] = ["ሎ"];
+    translatorMap["LU"] = ["ሉ"];
+    translatorMap["L"] = ["ል"];
+
+    translatorMap["MA"] = ["መ", "ማ"];
+    translatorMap["ME"] = ["ሜ", "መ"];
+    translatorMap["MI"] = ["ሚ", "ም"];
+    translatorMap["MO"] = ["ሞ"];
+    translatorMap["MU"] = ["ሙ"];
+    translatorMap["M"] = ["ም"];
+
+    translatorMap["NA"] = ["ነ", "ና"];
+    translatorMap["NE"] = ["ኔ", "ነ"];
+    translatorMap["NI"] = ["ኒ", "ን"];
+    translatorMap["NO"] = ["ኖ"];
+    translatorMap["NU"] = ["ኑ"];
+    translatorMap["N"] = ["ን"];
+
+    translatorMap["PA"] = ["ፐ", "ጰ", "ፓ", "ጳ"];
+    translatorMap["PE"] = ["ፔ", "ጴ", "ፐ", "ጰ"];
+    translatorMap["PI"] = ["ፒ", "ጲ", "ፕ", "ጵ"];
+    translatorMap["PO"] = ["ፖ", "ጶ"];
+    translatorMap["PU"] = ["ፑ", "ጱ"];
+    translatorMap["P"] = ["ፕ", "ጵ"];
+
+    translatorMap["QA"] = ["ቀ", "ቃ"];
+    translatorMap["QE"] = ["ቄ", "ቀ"];
+    translatorMap["QI"] = ["ቂ", "ቅ"];
+    translatorMap["QO"] = ["ቆ"];
+    translatorMap["QU"] = ["ቁ"];
+    translatorMap["Q"] = ["ቅ"];
+
+    translatorMap["RA"] = ["ረ", "ራ"];
+    translatorMap["RE"] = ["ሬ", "ረ"];
+    translatorMap["RI"] = ["ሪ", "ር"];
+    translatorMap["RO"] = ["ሮ"];
+    translatorMap["RU"] = ["ሩ"];
+    translatorMap["R"] = ["ር"];
+
+    translatorMap["SA"] = ["ሰ", "ጸ", "ሠ", "ሳ", "ጻ", "ሣ"];
+    translatorMap["SE"] = ["ሴ", "ጼ", "ሤ", "ሰ", "ጸ", "ሠ"];
+    translatorMap["SI"] = ["ሲ", "ጺ", "ሢ", "ስ", "ጽ", "ሥ"];
+    translatorMap["SO"] = ["ሶ", "ጾ", "ሦ"];
+    translatorMap["SU"] = ["ሱ", "ጹ", "ሡ"];
+    translatorMap["S"] = ["ስ", "ጽ", "ሥ"];
+
+    translatorMap["TA"] = ["ተ", "ጠ", "ታ", "ጣ"];
+    translatorMap["TE"] = ["ቴ", "ጤ", "ተ", "ጠ"];
+    translatorMap["TI"] = ["ቲ", "ጢ", "ት", "ጥ"];
+    translatorMap["TO"] = ["ቶ", "ጦ"];
+    translatorMap["TU"] = ["ቱ", "ጡ"];
+    translatorMap["T"] = ["ት", "ጥ"];
+
+    translatorMap["VA"] = ["ቨ", "ቫ"];
+    translatorMap["VE"] = ["ቬ", "ቨ"];
+    translatorMap["VI"] = ["ቪ", "ቭ"];
+    translatorMap["VO"] = ["ቮ"];
+    translatorMap["VU"] = ["ቩ"];
+    translatorMap["V"] = ["ቭ"];
+
+    translatorMap["WA"] = ["ወ", "ዋ"];
+    translatorMap["WE"] = ["ዌ", "ወ"];
+    translatorMap["WI"] = ["ዊ", "ው"];
+    translatorMap["WO"] = ["ዎ"];
+    translatorMap["WU"] = ["ዉ"];
+    translatorMap["W"] = ["ው"];
+
+    translatorMap["XA"] = ["ሸ", "ሻ"];
+    translatorMap["XE"] = ["ሼ", "ሸ"];
+    translatorMap["XI"] = ["ሺ", "ሽ"];
+    translatorMap["XO"] = ["ሾ"];
+    translatorMap["XU"] = ["ሹ"];
+    translatorMap["X"] = ["ሽ"];
+
+    translatorMap["YA"] = ["የ", "ያ"];
+    translatorMap["YE"] = ["ዬ", "የ"];
+    translatorMap["YI"] = ["ይ"];
+    translatorMap["YO"] = ["ዮ"];
+    translatorMap["YU"] = ["ዩ"];
+    translatorMap["Y"] = ["ይ"];
+
+    translatorMap["ZA"] = ["ዘ", "ዠ", "ዛ", "ዣ"];
+    translatorMap["ZE"] = ["ዜ", "ዤ", "ዘ", "ዠ"];
+    translatorMap["ZI"] = ["ዚ", "ዢ", "ዝ", "ዥ"];
+    translatorMap["ZO"] = ["ዞ", "ዦ"];
+    translatorMap["ZU"] = ["ዙ", "ዡ"];
+    translatorMap["Z"] = ["ዝ", "ዥ"];
+
+    translatorMap["A"] = ["አ", "ኣ"];
+    translatorMap["E"] = ["ኤ", "አ"];
+    translatorMap["I"] = ["ኢ", "እ"];
+    translatorMap["O"] = ["ኦ"];
+    translatorMap["U"] = ["ኡ"];
+
+    translatorMap["CHA"] = ["ቸ", "ቻ"];
+    translatorMap["CHE"] = ["ቼ", "ቸ"];
+    translatorMap["CHI"] = ["ቺ", "ች"];
+    translatorMap["CHO"] = ["ቾ"];
+    translatorMap["CHU"] = ["ቹ"];
+    translatorMap["CH"] = ["ች"];
+
+    translatorMap["SHA"] = ["ሸ", "ሻ"];
+    translatorMap["SHE"] = ["ሼ", "ሸ"];
+    translatorMap["SHI"] = ["ሺ", "ሽ"];
+    translatorMap["SHO"] = ["ሾ"];
+    translatorMap["SHU"] = ["ሹ"];
+    translatorMap["SH"] = ["ሽ"];
+
+    translatorMap["TSA"] = ["ፀ", "ፃ"];
+    translatorMap["TSE"] = ["ፄ", "ፀ"];
+    translatorMap["TSI"] = ["ፂ", "ፅ"];
+    translatorMap["TSO"] = ["ፆ"];
+    translatorMap["TSU"] = ["ፁ"];
+    translatorMap["TS"] = ["ፅ"];
+
+    translatorMap["ZHA"] = ["ዠ", "ዣ"];
+    translatorMap["ZHE"] = ["ዤ", "ዠ"];
+    translatorMap["ZHI"] = ["ዢ", "ዥ"];
+    translatorMap["ZHO"] = ["ዦ"];
+    translatorMap["ZHU"] = ["ዡ"];
+    translatorMap["ZH"] = ["ዥ"];
+
+    translatorMap["GNA"] = ["ኘ", "ኛ"];
+    translatorMap["GNE"] = ["ኜ", "ኘ"];
+    translatorMap["GNI"] = ["ኒ", "ኝ"];
+    translatorMap["GNO"] = ["ኞ"];
+    translatorMap["GNU"] = ["ኙ"];
+    translatorMap["GN"] = ["ኝ"];
+
+    translatorMap["BWA"] = ["ቧ"];
+    translatorMap["CWA"] = ["ቿ", "ጧ"];
+    translatorMap["DWA"] = ["ዷ"];
+    translatorMap["FWA"] = ["ፏ"];
+    translatorMap["GWA"] = ["ጓ"];
+    translatorMap["HWA"] = ["ሗ"];
+    translatorMap["KWA"] = ["ኳ", "ቋ"];
+    translatorMap["LWA"] = ["ሏ"];
+    translatorMap["MWA"] = ["ሟ"];
+    translatorMap["QWA"] = ["ቋ"];
+    translatorMap["RWA"] = ["ሯ"];
+    translatorMap["SWA"] = ["ሷ", "ሧ"];
+    translatorMap["TWA"] = ["ቷ", "ጧ"];
+    translatorMap["VWA"] = ["ቯ"];
+    translatorMap["ZWA"] = ["ዟ", "ዧ"];
+
+    translatorMap["CHWA"] = ["ቿ"];
+    translatorMap["SHWA"] = ["ሿ"];
+    translatorMap["TSWA"] = ["ጿ"];
+    translatorMap["GNWA"] = ["ኟ"];
+    translatorMap["ZHWA"] = ["ዧ"];
 
 
         var maxPosibilities = 8;
 
-        function divideIntoPhonems(str, res, finalRes) {
-            var i = 0;
-            while (i < str.length) {
-                if (i == str.length - 1) {
-                    res.push(str[i]);
-                    i++;
-                } else if (voyelE.includes(str[i])) {
-                    res.push(str[i]);
-                    i++;
-                } else if (i + 3 < str.length && doubleW.includes(str.substring(i, i + 4))) {
-                    divideIntoPhonems(str.substring(i + 4), res.concat(str.substring(i, i + 4)), finalRes);
-                    divideIntoPhonems(str.substring(i + 3), res.concat(str.substring(i, i + 3)), finalRes);
-                    divideIntoPhonems(str.substring(i + 2), res.concat(str.substring(i, i + 2)), finalRes);
-                    return
+    function divideIntoPhonems(str, res, finalRes) {
 
-                } else if (i + 2 < str.length && singleW.includes(str.substring(i, i + 3))) {
-                    divideIntoPhonems(str.substring(i + 3), res.concat(str.substring(i, i + 3)), finalRes);
-                    divideIntoPhonems(str.substring(i + 1), res.concat(str.substring(i, i + 1)), finalRes);
-                    return
-                } else if (doubleConsonantsE.includes(str.substring(i, 2 + i))) {
-                    if (i + 2 < str.length && voyelE.includes(str[i + 2])) {
-                        divideIntoPhonems(str.substring(i + 3), res.concat(str.substring(i, i + 3)), finalRes)
-                    }
+        if (finalRes.length > maxPosibilities) {
+            return;
+        }
 
-                    divideIntoPhonems(str.substring(i + 2), res.concat(str.substring(i, i + 2)), finalRes);
-                    divideIntoPhonems(str.substring(i + 1), res.concat(str.substring(i, i + 1)), finalRes);
-                    return
-                } else if (consonantsE.includes(str[1 + i])) {
-                    res.push(str[i]);
-                    i++;
-                } else {
-                    divideIntoPhonems(str.substring(i + 2), res.concat(str.substring(i, i + 2)), finalRes);
-                    divideIntoPhonems(str.substring(i + 1), res.concat(str.substring(i, i + 1)), finalRes);
-                    return
+        var i = 0;
+        while (i < str.length) {
+            if (i == str.length - 1) {
+                res.push(str[i]);
+                i++;
+            } else if (vowels.includes(str[i])) {
+                res.push(str[i]);
+                i++;
+            } else if (i + 3 < str.length && doubleW.includes(str.substring(i, i + 4))) {
+                divideIntoPhonems(str.substring(i + 4), res.concat(str.substring(i, i + 4)), finalRes);
+                divideIntoPhonems(str.substring(i + 3), res.concat(str.substring(i, i + 3)), finalRes);
+                divideIntoPhonems(str.substring(i + 2), res.concat(str.substring(i, i + 2)), finalRes);
+                return
+
+            } else if (i + 2 < str.length && singleW.includes(str.substring(i, i + 3))) {
+                divideIntoPhonems(str.substring(i + 3), res.concat(str.substring(i, i + 3)), finalRes);
+                divideIntoPhonems(str.substring(i + 1), res.concat(str.substring(i, i + 1)), finalRes);
+                return
+            } else if (doubleConsonants.includes(str.substring(i, 2 + i))) {
+                if (i + 2 < str.length && vowels.includes(str[i + 2])) {
+                    divideIntoPhonems(str.substring(i + 3), res.concat(str.substring(i, i + 3)), finalRes)
                 }
 
+                divideIntoPhonems(str.substring(i + 2), res.concat(str.substring(i, i + 2)), finalRes);
+                divideIntoPhonems(str.substring(i + 1), res.concat(str.substring(i, i + 1)), finalRes);
+                return
+            } else if (consonants.includes(str[1 + i])) {
+                res.push(str[i]);
+                i++;
+            } else {
+                divideIntoPhonems(str.substring(i + 2), res.concat(str.substring(i, i + 2)), finalRes);
+                divideIntoPhonems(str.substring(i + 1), res.concat(str.substring(i, i + 1)), finalRes);
+                return
             }
 
+        }
+
+        finalRes.push(res);
+    }
+
+    function getPossibleFidels(listOfPhonems, res, finalRes) {
+
+        if (finalRes.length > maxPosibilities) {
+            return;
+        }
+
+        while (listOfPhonems.length != 0) {
+            var firstPhonem = listOfPhonems.shift();
+            var phonemList = translatorMap[firstPhonem];
+            if (null == phonemList || phonemList.length == 0) {
+
+                return
+            } else if (phonemList.length > 1) {
+                for (var i = 0; i < phonemList.length; i++) {
+                    getPossibleFidels(listOfPhonems.slice(), res.concat(phonemList[i]), finalRes)
+                }
+                return
+            } else {
+                res.push(phonemList[0]);
+            }
+
+        }
+        if (res.length != 0) {
             finalRes.push(res);
         }
 
-        function getPossibleFidels(listOfPhonems, res, finalRes) {
+    }
 
-            while (listOfPhonems.length != 0) {
-                var firstPhonem = listOfPhonems.shift();
-                var phonemList = translatorMap[firstPhonem];
-                if (null == phonemList || phonemList.length == 0) {
 
-                    return
-                } else if (phonemList.length > 1) {
-                    for (var i = 0; i < phonemList.length; i++) {
-                        getPossibleFidels(listOfPhonems.slice(), res.concat(phonemList[i]), finalRes)
-                    }
-                    return
-                } else {
-                    res.push(phonemList[0]);
-                }
+    function getFidels(input) {
 
+        input = input.replace(/[^A-Za-z]+/g, "");
+
+        if (input.length != 0) {
+            input = input.toUpperCase();
+            var listOfPhonems = [];
+            divideIntoPhonems(input, [], listOfPhonems);
+
+            var posFidelList = [];
+
+            for (var i = 0; i < maxPosibilities && i < listOfPhonems.length; i++) {
+                getPossibleFidels(listOfPhonems[i], [], posFidelList)
             }
-            if (res.length != 0) {
-                finalRes.push(res);
+            var finalRes = [];
+            for (var j = 0; j < maxPosibilities && j < posFidelList.length; j++) {
+                finalRes.push(posFidelList[j].join(""));
             }
-
+            return finalRes;
         }
-
-
-        function getFidels(input) {
-
-            input = input.replace(/[^A-Za-z]+/g, "");
-
-            if (input.length != 0) {
-                input = input.toUpperCase();
-                var listOfPhonems = [];
-                divideIntoPhonems(input, [], listOfPhonems);
-
-                var posFidelList = [];
-
-                for (var i = 0; i < maxPosibilities && i < listOfPhonems.length; i++) {
-                    getPossibleFidels(listOfPhonems[i], [], posFidelList)
-                }
-                var finalRes = [];
-                for (var j = 0; j < maxPosibilities && j < posFidelList.length; j++) {
-                    finalRes.push(posFidelList[j].join(""));
-                }
-                return finalRes;
-            }
-            return []
-        }
-
+        return []
+    }
 
 
     var $global_fsm_InputEventsEnum = {
@@ -343,17 +387,17 @@
         STATE_WRITING_SHOW: 3
     };
 
-    $.fn.eventManager = function (e,k) {
+    $.fn.eventManager = function (fsm_event, html_event) {
 
         switch ($(this).data("$fsm_state")) {
             case $global_fsm_statesEnum.STATE_IDLE:
-                $(this).actionOnStateIdle(e, k);
+                $(this).actionOnStateIdle(fsm_event, html_event);
                 break;
             case $global_fsm_statesEnum.STATE_WRITING_NO_SHOW:
-                $(this).actionOnStateWritingNoShow(e, k);
+                $(this).actionOnStateWritingNoShow(fsm_event, html_event);
                 break;
             case $global_fsm_statesEnum.STATE_WRITING_SHOW:
-                $(this).actionOnStateWritingShow(e, k);
+                $(this).actionOnStateWritingShow(fsm_event, html_event);
                 break;
             default:
                 console.log("ERROR in the FSM");
@@ -361,11 +405,13 @@
     };
 
 
-    $.fn.actionOnStateIdle = function (e,k) {
+    $.fn.actionOnStateIdle = function (fsm_event, event) {
 
-        console.log("received event " + printable(e) + " on state idle");
+        console.log("received event " + printable(fsm_event) + " on state idle");
 
-        switch (e) {
+        var k = null != event && (event.type == "keydown" || event.type == "keypress") ? event.keyCode || event.charCode: "";
+
+        switch (fsm_event) {
             case $global_fsm_InputEventsEnum.TYPE_AZ:
                 $(this).data("$fsm_string_processed", String.fromCharCode(k));
                 $(this).data("$fsm_state", $global_fsm_statesEnum.STATE_WRITING_NO_SHOW);
@@ -388,17 +434,19 @@
 
             default:
                 $(this).data("$fsm_string_processed", "");
-                console.error("Error in the FSM. untreated event " + e + " in state IDLE");
+                console.error("Error in the FSM. untreated event " + fsm_event + " in state IDLE");
                 break
 
         }
     };
 
-    $.fn.actionOnStateWritingNoShow = function (e,k) {
+    $.fn.actionOnStateWritingNoShow = function (fsm_event, event) {
 
-        console.log("received event " + printable(e) + " on state writing no show");
+        console.log("received event " + printable(fsm_event) + " on state writing no show");
 
-        switch (e) {
+        var k = null != event && (event.type == "keydown" || event.type == "keypress") ? event.keyCode || event.charCode : "";
+
+        switch (fsm_event) {
             case $global_fsm_InputEventsEnum.TYPE_AZ:
                 $(this).data("$fsm_string_processed", $(this).data("$fsm_string_processed") + String.fromCharCode(k));
                 this.doApiQuery();
@@ -434,15 +482,18 @@
                 $(this).data("$fsm_state", $global_fsm_statesEnum.STATE_IDLE);
                 $(this).data("$fsm_string_processed", "");
                 this.hideDropdown();
-                console.error("Error in the FSM. untreated event " + e + " in state IDLE");
+                console.error("Error in the FSM. untreated event " + fsm_event + " in state IDLE");
                 break
         }
     };
 
-    $.fn.actionOnStateWritingShow = function (e,k) {
+    $.fn.actionOnStateWritingShow = function (fsm_event, event) {
 
-        console.log("received event " + printable(e) + " on state writing show");
-        switch (e) {
+        console.log("received event " + printable(fsm_event) + " on state writing show");
+
+        var k = null != event && (event.type == "keydown" || event.type == "keypress") ? event.keyCode || event.charCode : "";
+
+        switch (fsm_event) {
             case $global_fsm_InputEventsEnum.TYPE_AZ:
                 $(this).data("$fsm_state", $global_fsm_statesEnum.STATE_WRITING_NO_SHOW);
                 this.hideDropdown();
@@ -502,7 +553,7 @@
                 break;
 
             default:
-                console.error("Error in the FSM. untreated event " + e + " in state IDLE");
+                console.error("Error in the FSM. untreated event " + fsm_event + " in state IDLE");
                 $(this).data("$fsm_state", $global_fsm_statesEnum.STATE_IDLE);
                 $(this).data("$fsm_string_processed", "");
                 this.hideDropdown();
@@ -520,7 +571,7 @@
             var response = getFidels($(this).data("$fsm_string_processed"));
             $(this).data("$fsm_list_fidels", response);
             console.log($(this).data("$fsm_list_fidels"));
-            $(this).eventManager($global_fsm_InputEventsEnum.ON_RECEIVE_FIELDS)
+            $(this).eventManager($global_fsm_InputEventsEnum.ON_RECEIVE_FIELDS, null)
         }
     };
 
@@ -533,9 +584,9 @@
         var drop = $(this).next("div.dropdown").find("div.dropdown-content");
         drop.empty();
         drop.show();
-        $.each(l,function (index, value){
-            var idx = index+1;
-            drop.append("<span data-idx='" + index + "'>" + idx + ". " + value + "</span>");
+        $.each(l, function (index, value) {
+            var idx = index < 9 ? index + 1 + ". " : "&nbsp;&nbsp;&nbsp;";
+            drop.append("<span data-idx='" + index + "'>" + idx + value + "</span>");
         });
         this.highlightSelectionInDropdown();
     };
@@ -569,7 +620,7 @@
         var d = $(this).data("$fsm_list_fidels_selected_index");
         var drop = $(this).next("div.dropdown").find("div.dropdown-content");
         drop.find("span").removeClass("selected");
-        drop.find("span[data-idx='"+d+"']").addClass("selected");
+        drop.find("span[data-idx='" + d + "']").addClass("selected");
     };
 
     $.fn.choseSelectedDropdownOption = function () {
@@ -620,7 +671,7 @@
         console.log("click on dropdown");
         var idx = this.data("idx");
         var $_fidel_input = this.parent().parent().siblings("input");
-        $_fidel_input.choseDropdownOption(idx+1);
+        $_fidel_input.choseDropdownOption(idx + 1);
         $_fidel_input.hideDropdown();
         $_fidel_input.focus();
     };
@@ -635,8 +686,8 @@
             $(this).onDropdownClick();
         });
 
-        $_fidelInput.click(function () {
-            $(this).eventManager($global_fsm_InputEventsEnum.ON_CLICK);
+        $_fidelInput.click(function (event) {
+            $(this).eventManager($global_fsm_InputEventsEnum.ON_CLICK, event);
         });
 
         $_fidelInput.data("$fsm_state", $global_fsm_statesEnum.STATE_IDLE);
@@ -644,25 +695,25 @@
         $_fidelInput.data("$fsm_list_fidels", []);
         $_fidelInput.data("$fsm_list_fidels_selected_index", 0);
 
-        $_fidelInput.on("focus", function () {
-            $(this).eventManager($global_fsm_InputEventsEnum.ON_FOCUS);
+        $_fidelInput.on("focus", function (event) {
+            $(this).eventManager($global_fsm_InputEventsEnum.ON_FOCUS, event);
         });
 
         $_fidelInput.on("keydown", function (event) {
             var key = event.keyCode;
 
             if (key == 8) {
-                $(this).eventManager($global_fsm_InputEventsEnum.TYPE_BACKSPACE);
+                $(this).eventManager($global_fsm_InputEventsEnum.TYPE_BACKSPACE, event);
             }
             else if (key == 38) {
-                $(this).eventManager($global_fsm_InputEventsEnum.TYPE_UP_ARROW);
+                $(this).eventManager($global_fsm_InputEventsEnum.TYPE_UP_ARROW, event);
             }
             else if (key == 40) {
-                $(this).eventManager($global_fsm_InputEventsEnum.TYPE_DOWN_ARROW);
+                $(this).eventManager($global_fsm_InputEventsEnum.TYPE_DOWN_ARROW, event);
             }
             // key right, left, ESC
             else if (key == 37 || key == 39 || key == 27) {
-                $(this).eventManager($global_fsm_InputEventsEnum.TYPE_OTHER);
+                $(this).eventManager($global_fsm_InputEventsEnum.TYPE_OTHER, event);
             }
         });
 
@@ -670,29 +721,29 @@
             var key = event.keyCode || event.charCode;
 
             if (key >= 48 && key <= 57) {
-                $(this).eventManager($global_fsm_InputEventsEnum.TYPE_09, key);
+                $(this).eventManager($global_fsm_InputEventsEnum.TYPE_09, event);
             }
             else if ((key >= 65 && key <= 90) || (key >= 97 && key <= 122)) {
-                $(this).eventManager($global_fsm_InputEventsEnum.TYPE_AZ, key);
+                $(this).eventManager($global_fsm_InputEventsEnum.TYPE_AZ, event);
             }
             else if (key == 32) {
-                $(this).eventManager($global_fsm_InputEventsEnum.TYPE_SPACE);
+                $(this).eventManager($global_fsm_InputEventsEnum.TYPE_SPACE, event);
             }
             else if (key == 13) {
-                $(this).eventManager($global_fsm_InputEventsEnum.TYPE_ENTER);
+                $(this).eventManager($global_fsm_InputEventsEnum.TYPE_ENTER, event);
             }
             else if (key == 8) {
                 //nothing;
-		// On firefox, the backspace event is raised twice
+                // On firefox, the backspace event is raised twice
             }
             else {
-                $(this).eventManager($global_fsm_InputEventsEnum.TYPE_OTHER);
+                $(this).eventManager($global_fsm_InputEventsEnum.TYPE_OTHER, event);
             }
 
         });
 
         $_fidelInput.on("paste", function () {
-            $(this).eventManager($global_fsm_InputEventsEnum.ON_PASTE)
+            $(this).eventManager($global_fsm_InputEventsEnum.ON_PASTE, event)
         });
 
 
