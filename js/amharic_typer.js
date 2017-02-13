@@ -10,147 +10,147 @@
 
     var translatorMap = {};
 
-    translatorMap["BA"] = ["በ", "ባ"];
+    translatorMap["BA"] = ["ባ", "በ"];
     translatorMap["BE"] = ["ቤ", "በ"];
     translatorMap["BI"] = ["ቢ", "ብ"];
     translatorMap["BO"] = ["ቦ"];
     translatorMap["BU"] = ["ቡ"];
     translatorMap["B"] = ["ብ"];
 
-    translatorMap["CA"] = ["ቸ", "ጬ", "ቻ", "ጫ"];
-    translatorMap["CE"] = ["ቼ", "ጨ", "ቸ", "ጬ"];
-    translatorMap["CI"] = ["ቺ", "ጪ", "ች", "ጭ"];
-    translatorMap["CO"] = ["ቾ", "ጮ"];
-    translatorMap["CU"] = ["ቹ", "ጩ"];
-    translatorMap["C"] = ["ች", "ጭ"];
+    translatorMap["CA"] = ["ጫ", "ቻ", "ጨ", "ቸ"];
+    translatorMap["CE"] = ["ጬ", "ቼ", "ጨ", "ቸ"];
+    translatorMap["CI"] = ["ጪ","ቺ", "ጭ", "ች"];
+    translatorMap["CO"] = ["ጮ", "ቾ"];
+    translatorMap["CU"] = ["ጩ", "ቹ"];
+    translatorMap["C"] = ["ጭ", "ች"];
 
-    translatorMap["DA"] = ["ደ", "ዳ"];
+    translatorMap["DA"] = ["ዳ", "ደ"];
     translatorMap["DE"] = ["ዴ", "ደ"];
     translatorMap["DI"] = ["ዲ", "ድ"];
     translatorMap["DO"] = ["ዶ"];
     translatorMap["DU"] = ["ዱ"];
     translatorMap["D"] = ["ድ"];
 
-    translatorMap["FA"] = ["ፈ", "ፋ"];
+    translatorMap["FA"] = ["ፋ", "ፈ"];
     translatorMap["FE"] = ["ፌ", "ፈ"];
     translatorMap["FI"] = ["ፊ", "ፍ"];
     translatorMap["FO"] = ["ፎ"];
     translatorMap["FU"] = ["ፉ"];
     translatorMap["F"] = ["ፍ"];
 
-    translatorMap["GA"] = ["ገ", "ጋ"];
+    translatorMap["GA"] = ["ጋ", "ገ"];
     translatorMap["GE"] = ["ጌ", "ገ"];
     translatorMap["GI"] = ["ጊ", "ግ"];
     translatorMap["GO"] = ["ጎ"];
     translatorMap["GU"] = ["ጉ"];
     translatorMap["G"] = ["ግ"];
 
-    translatorMap["HA"] = ["ሀ", "ሐ", "ሃ", "ሓ"];
-    translatorMap["HE"] = ["ሄ", "ሔ", "ሀ", "ሐ"];
+    translatorMap["HA"] = ["ሃ", "ሓ", "ሀ", "ሐ"];
+    translatorMap["HE"] = ["ሄ", "ሔ"];
     translatorMap["HI"] = ["ህ", "ሕ", "ህ", "ሕ"];
     translatorMap["HO"] = ["ሆ", "ሖ"];
     translatorMap["HU"] = ["ሁ", "ሑ"];
     translatorMap["H"] = ["ህ", "ሕ"];
 
-    translatorMap["JA"] = ["ጀ", "ጃ"];
+    translatorMap["JA"] = ["ጃ", "ጀ"];
     translatorMap["JE"] = ["ጄ", "ጀ"];
     translatorMap["JI"] = ["ጂ", "ጅ"];
     translatorMap["JO"] = ["ጆ"];
     translatorMap["JU"] = ["ጁ"];
     translatorMap["J"] = ["ጅ"];
 
-    translatorMap["KA"] = ["ከ", "ቀ", "ካ", "ቃ"];
+    translatorMap["KA"] = ["ካ", "ቃ", "ከ", "ቀ"];
     translatorMap["KE"] = ["ቄ", "ኬ", "ከ", "ቀ"];
     translatorMap["KI"] = ["ኪ", "ቂ", "ክ", "ቅ"];
     translatorMap["KO"] = ["ኮ", "ቆ"];
     translatorMap["KU"] = ["ቁ", "ኩ"];
     translatorMap["K"] = ["ክ", "ቅ"];
 
-    translatorMap["LA"] = ["ለ", "ላ"];
+    translatorMap["LA"] = ["ላ", "ለ"];
     translatorMap["LE"] = ["ሌ", "ለ"];
     translatorMap["LI"] = ["ሊ", "ል"];
     translatorMap["LO"] = ["ሎ"];
     translatorMap["LU"] = ["ሉ"];
     translatorMap["L"] = ["ል"];
 
-    translatorMap["MA"] = ["መ", "ማ"];
+    translatorMap["MA"] = ["ማ", "መ"];
     translatorMap["ME"] = ["ሜ", "መ"];
     translatorMap["MI"] = ["ሚ", "ም"];
     translatorMap["MO"] = ["ሞ"];
     translatorMap["MU"] = ["ሙ"];
     translatorMap["M"] = ["ም"];
 
-    translatorMap["NA"] = ["ነ", "ና"];
+    translatorMap["NA"] = ["ና", "ነ"];
     translatorMap["NE"] = ["ኔ", "ነ"];
     translatorMap["NI"] = ["ኒ", "ን"];
     translatorMap["NO"] = ["ኖ"];
     translatorMap["NU"] = ["ኑ"];
     translatorMap["N"] = ["ን"];
 
-    translatorMap["PA"] = ["ፐ", "ጰ", "ፓ", "ጳ"];
+    translatorMap["PA"] = ["ፓ", "ጳ", "ፐ", "ጰ"];
     translatorMap["PE"] = ["ፔ", "ጴ", "ፐ", "ጰ"];
     translatorMap["PI"] = ["ፒ", "ጲ", "ፕ", "ጵ"];
     translatorMap["PO"] = ["ፖ", "ጶ"];
     translatorMap["PU"] = ["ፑ", "ጱ"];
     translatorMap["P"] = ["ፕ", "ጵ"];
 
-    translatorMap["QA"] = ["ቀ", "ቃ"];
+    translatorMap["QA"] = ["ቃ", "ቀ"];
     translatorMap["QE"] = ["ቄ", "ቀ"];
     translatorMap["QI"] = ["ቂ", "ቅ"];
     translatorMap["QO"] = ["ቆ"];
     translatorMap["QU"] = ["ቁ"];
     translatorMap["Q"] = ["ቅ"];
 
-    translatorMap["RA"] = ["ረ", "ራ"];
+    translatorMap["RA"] = ["ራ", "ረ"];
     translatorMap["RE"] = ["ሬ", "ረ"];
     translatorMap["RI"] = ["ሪ", "ር"];
     translatorMap["RO"] = ["ሮ"];
     translatorMap["RU"] = ["ሩ"];
     translatorMap["R"] = ["ር"];
 
-    translatorMap["SA"] = ["ሰ", "ጸ", "ሠ", "ሳ", "ጻ", "ሣ"];
+    translatorMap["SA"] = ["ሳ", "ጻ", "ሣ", "ሰ", "ጸ", "ሠ"];
     translatorMap["SE"] = ["ሴ", "ጼ", "ሤ", "ሰ", "ጸ", "ሠ"];
     translatorMap["SI"] = ["ሲ", "ጺ", "ሢ", "ስ", "ጽ", "ሥ"];
     translatorMap["SO"] = ["ሶ", "ጾ", "ሦ"];
     translatorMap["SU"] = ["ሱ", "ጹ", "ሡ"];
     translatorMap["S"] = ["ስ", "ጽ", "ሥ"];
 
-    translatorMap["TA"] = ["ተ", "ጠ", "ታ", "ጣ"];
+    translatorMap["TA"] = ["ታ", "ጣ", "ተ", "ጠ"];
     translatorMap["TE"] = ["ቴ", "ጤ", "ተ", "ጠ"];
     translatorMap["TI"] = ["ቲ", "ጢ", "ት", "ጥ"];
     translatorMap["TO"] = ["ቶ", "ጦ"];
     translatorMap["TU"] = ["ቱ", "ጡ"];
     translatorMap["T"] = ["ት", "ጥ"];
 
-    translatorMap["VA"] = ["ቨ", "ቫ"];
+    translatorMap["VA"] = ["ቫ", "ቨ"];
     translatorMap["VE"] = ["ቬ", "ቨ"];
     translatorMap["VI"] = ["ቪ", "ቭ"];
     translatorMap["VO"] = ["ቮ"];
     translatorMap["VU"] = ["ቩ"];
     translatorMap["V"] = ["ቭ"];
 
-    translatorMap["WA"] = ["ወ", "ዋ"];
+    translatorMap["WA"] = ["ዋ","ወ"];
     translatorMap["WE"] = ["ዌ", "ወ"];
     translatorMap["WI"] = ["ዊ", "ው"];
     translatorMap["WO"] = ["ዎ"];
     translatorMap["WU"] = ["ዉ"];
     translatorMap["W"] = ["ው"];
 
-    translatorMap["XA"] = ["ሸ", "ሻ"];
+    translatorMap["XA"] = ["ሻ", "ሸ"];
     translatorMap["XE"] = ["ሼ", "ሸ"];
     translatorMap["XI"] = ["ሺ", "ሽ"];
     translatorMap["XO"] = ["ሾ"];
     translatorMap["XU"] = ["ሹ"];
     translatorMap["X"] = ["ሽ"];
 
-    translatorMap["YA"] = ["የ", "ያ"];
+    translatorMap["YA"] = ["ያ", "የ"];
     translatorMap["YE"] = ["ዬ", "የ"];
     translatorMap["YI"] = ["ይ"];
     translatorMap["YO"] = ["ዮ"];
     translatorMap["YU"] = ["ዩ"];
     translatorMap["Y"] = ["ይ"];
 
-    translatorMap["ZA"] = ["ዘ", "ዠ", "ዛ", "ዣ"];
+    translatorMap["ZA"] = ["ዛ", "ዣ", "ዘ", "ዠ"];
     translatorMap["ZE"] = ["ዜ", "ዤ", "ዘ", "ዠ"];
     translatorMap["ZI"] = ["ዚ", "ዢ", "ዝ", "ዥ"];
     translatorMap["ZO"] = ["ዞ", "ዦ"];
@@ -163,35 +163,35 @@
     translatorMap["O"] = ["ኦ"];
     translatorMap["U"] = ["ኡ"];
 
-    translatorMap["CHA"] = ["ቸ", "ቻ"];
+    translatorMap["CHA"] = ["ቻ", "ቸ"];
     translatorMap["CHE"] = ["ቼ", "ቸ"];
     translatorMap["CHI"] = ["ቺ", "ች"];
     translatorMap["CHO"] = ["ቾ"];
     translatorMap["CHU"] = ["ቹ"];
     translatorMap["CH"] = ["ች"];
 
-    translatorMap["SHA"] = ["ሸ", "ሻ"];
+    translatorMap["SHA"] = ["ሻ", "ሸ"];
     translatorMap["SHE"] = ["ሼ", "ሸ"];
     translatorMap["SHI"] = ["ሺ", "ሽ"];
     translatorMap["SHO"] = ["ሾ"];
     translatorMap["SHU"] = ["ሹ"];
     translatorMap["SH"] = ["ሽ"];
 
-    translatorMap["TSA"] = ["ፀ", "ፃ"];
+    translatorMap["TSA"] = ["ፃ", "ፀ"];
     translatorMap["TSE"] = ["ፄ", "ፀ"];
     translatorMap["TSI"] = ["ፂ", "ፅ"];
     translatorMap["TSO"] = ["ፆ"];
     translatorMap["TSU"] = ["ፁ"];
     translatorMap["TS"] = ["ፅ"];
 
-    translatorMap["ZHA"] = ["ዠ", "ዣ"];
+    translatorMap["ZHA"] = ["ዣ", "ዠ"];
     translatorMap["ZHE"] = ["ዤ", "ዠ"];
     translatorMap["ZHI"] = ["ዢ", "ዥ"];
     translatorMap["ZHO"] = ["ዦ"];
     translatorMap["ZHU"] = ["ዡ"];
     translatorMap["ZH"] = ["ዥ"];
 
-    translatorMap["GNA"] = ["ኘ", "ኛ"];
+    translatorMap["GNA"] = ["ኛ", "ኘ"];
     translatorMap["GNE"] = ["ኜ", "ኘ"];
     translatorMap["GNI"] = ["ኒ", "ኝ"];
     translatorMap["GNO"] = ["ኞ"];
@@ -219,6 +219,13 @@
     translatorMap["TSWA"] = ["ጿ"];
     translatorMap["GNWA"] = ["ኟ"];
     translatorMap["ZHWA"] = ["ዧ"];
+
+    translatorMap[" "] = ["፡"];
+    translatorMap["."] = ["።"];
+    translatorMap[","] = ["፣"];
+    translatorMap[";"] = ["፤"];
+    translatorMap[":"] = ["፥"];
+    translatorMap["?"] = ["፧"];
 
 
         var maxPosibilities = 8;
@@ -327,7 +334,7 @@
         TYPE_09: 2,
         TYPE_DOWN_ARROW: 3,
         TYPE_UP_ARROW: 4,
-        TYPE_SPACE: 5,
+        TYPE_PUNCTUATION: 5,
         TYPE_ENTER: 6,
         TYPE_BACKSPACE: 7,
         TYPE_OTHER: 8,
@@ -351,8 +358,8 @@
             case $global_fsm_InputEventsEnum.TYPE_UP_ARROW:
                 return "TYPE_UP_ARROW";
                 break;
-            case $global_fsm_InputEventsEnum.TYPE_SPACE:
-                return "TYPE_SPACE";
+            case $global_fsm_InputEventsEnum.TYPE_PUNCTUATION:
+                return "TYPE_PUNCTUATION";
                 break;
             case $global_fsm_InputEventsEnum.TYPE_ENTER:
                 return "TYPE_ENTER";
@@ -418,10 +425,16 @@
                 this.doApiQuery();
                 break;
 
+            case $global_fsm_InputEventsEnum.TYPE_PUNCTUATION:
+                if (this.isPunctuationTranslated()) {
+                    this.writeInInput("", String.fromCharCode(k));
+                    event.preventDefault();
+                }
+                break;
+
             case $global_fsm_InputEventsEnum.TYPE_09:
             case $global_fsm_InputEventsEnum.TYPE_DOWN_ARROW:
             case $global_fsm_InputEventsEnum.TYPE_UP_ARROW:
-            case $global_fsm_InputEventsEnum.TYPE_SPACE:
             case $global_fsm_InputEventsEnum.TYPE_ENTER:
             case $global_fsm_InputEventsEnum.TYPE_BACKSPACE:
             case $global_fsm_InputEventsEnum.TYPE_OTHER:
@@ -434,7 +447,7 @@
 
             default:
                 $(this).data("$fsm_string_processed", "");
-                console.error("Error in the FSM. untreated event " + fsm_event + " in state IDLE");
+                console.error("Error in the FSM. untreated event " + printable(fsm_event) + " in state IDLE");
                 break
 
         }
@@ -442,7 +455,7 @@
 
     $.fn.actionOnStateWritingNoShow = function (fsm_event, event) {
 
-        console.log("received event " + printable(fsm_event) + " on state writing no show");
+        console.log("received event " + printable(fsm_event) + " on state Writing No Show");
 
         var k = null != event && (event.type == "keydown" || event.type == "keypress") ? event.keyCode || event.charCode : "";
 
@@ -466,8 +479,16 @@
                 this.showDropdown();
                 break;
 
+            case $global_fsm_InputEventsEnum.TYPE_PUNCTUATION:
+                $(this).data("$fsm_state", $global_fsm_statesEnum.STATE_IDLE);
+                $(this).data("$fsm_string_processed", "");
+                if (this.isPunctuationTranslated()) {
+                    this.writeInInput("", String.fromCharCode(k));
+                    event.preventDefault();
+                }
+                break;
+
             case $global_fsm_InputEventsEnum.TYPE_09:
-            case $global_fsm_InputEventsEnum.TYPE_SPACE:
             case $global_fsm_InputEventsEnum.TYPE_ENTER:
             case $global_fsm_InputEventsEnum.TYPE_OTHER:
             case $global_fsm_InputEventsEnum.ON_FOCUS:
@@ -475,21 +496,19 @@
             case $global_fsm_InputEventsEnum.ON_CLICK:
                 $(this).data("$fsm_state", $global_fsm_statesEnum.STATE_IDLE);
                 $(this).data("$fsm_string_processed", "");
-                this.hideDropdown();
                 break;
 
             default:
                 $(this).data("$fsm_state", $global_fsm_statesEnum.STATE_IDLE);
                 $(this).data("$fsm_string_processed", "");
-                this.hideDropdown();
-                console.error("Error in the FSM. untreated event " + fsm_event + " in state IDLE");
+                console.error("Error in the FSM. untreated event " + printable(fsm_event) + " in state IDLE");
                 break
         }
     };
 
     $.fn.actionOnStateWritingShow = function (fsm_event, event) {
 
-        console.log("received event " + printable(fsm_event) + " on state writing show");
+        console.log("received event " + printable(fsm_event) + " on state Writing Show");
 
         var k = null != event && (event.type == "keydown" || event.type == "keypress") ? event.keyCode || event.charCode : "";
 
@@ -504,6 +523,7 @@
             case $global_fsm_InputEventsEnum.TYPE_09:
                 $(this).data("$fsm_state", $global_fsm_statesEnum.STATE_IDLE);
                 this.choseDropdownOption(String.fromCharCode(k));
+                $(this).data("$fsm_string_processed", "");
                 this.hideDropdown();
                 event.preventDefault();
                 break;
@@ -518,10 +538,19 @@
                 event.preventDefault();
                 break;
 
-            case $global_fsm_InputEventsEnum.TYPE_SPACE:
+            case $global_fsm_InputEventsEnum.TYPE_PUNCTUATION:
+                $(this).data("$fsm_state", $global_fsm_statesEnum.STATE_IDLE);
+                this.choseSelectedDropdownOption(String.fromCharCode(k));
+                $(this).data("$fsm_string_processed", "");
+                this.hideDropdown();
+                this.resetData();
+                event.preventDefault();
+                break;
+
             case $global_fsm_InputEventsEnum.TYPE_ENTER:
                 $(this).data("$fsm_state", $global_fsm_statesEnum.STATE_IDLE);
-                this.choseSelectedDropdownOption();
+                this.choseSelectedDropdownOption("");
+                $(this).data("$fsm_string_processed", "");
                 this.hideDropdown();
                 this.resetData();
                 event.preventDefault();
@@ -536,6 +565,7 @@
                 }
                 else {
                     $(this).data("$fsm_state", $global_fsm_statesEnum.STATE_IDLE);
+                    $(this).data("$fsm_string_processed", "");
                 }
                 break;
 
@@ -553,7 +583,7 @@
                 break;
 
             default:
-                console.error("Error in the FSM. untreated event " + fsm_event + " in state IDLE");
+                console.error("Error in the FSM. untreated event " + printable(fsm_event) + " in state IDLE");
                 $(this).data("$fsm_state", $global_fsm_statesEnum.STATE_IDLE);
                 $(this).data("$fsm_string_processed", "");
                 this.hideDropdown();
@@ -623,26 +653,39 @@
         drop.find("span[data-idx='" + d + "']").addClass("selected");
     };
 
-    $.fn.choseSelectedDropdownOption = function () {
-        this.writeInInput($(this).data("$fsm_list_fidels")[$(this).data("$fsm_list_fidels_selected_index")]);
-        console.log("space/enter on dropdown")
+    $.fn.choseSelectedDropdownOption = function (punctuation) {
+        this.writeInInput($(this).data("$fsm_list_fidels")[$(this).data("$fsm_list_fidels_selected_index")], punctuation);
+        console.log("punctuation/enter on dropdown")
     };
 
     $.fn.choseDropdownOption = function (index) {
         if (index != 0) {
             var idx = ($(this).data("$fsm_list_fidels").length < index ? $(this).data("$fsm_list_fidels").length - 1 : index - 1);
-            this.writeInInput($(this).data("$fsm_list_fidels")[idx]);
+            this.writeInInput($(this).data("$fsm_list_fidels")[idx], "");
         }
         console.log("Choose dropdown " + index)
     };
 
-    $.fn.writeInInput = function (str) {
+    $.fn.isPunctuationTranslated = function (){
+
+        return $(this).hasClass("amharic-punctuation");
+    };
+
+    $.fn.getPunctuation = function (pct){
+
+        if (this.isPunctuationTranslated() && pct in translatorMap)
+            return translatorMap[pct];
+
+        return pct;
+    };
+
+    $.fn.writeInInput = function (str, punctuation) {
         var v = this.val();
         var pos = this[0].selectionStart;
 
-        v = v.substring(0, pos - $(this).data("$fsm_string_processed").length) + str + " " + v.substring(pos, v.length);
+        v = v.substring(0, pos - $(this).data("$fsm_string_processed").length) + str + this.getPunctuation(punctuation) + v.substring(pos, v.length);
         this.val(v);
-        this.selectRange(pos - $(this).data("$fsm_string_processed").length + str.length + 1);
+        this.selectRange(pos - $(this).data("$fsm_string_processed").length + str.length + this.getPunctuation(punctuation).length);
     };
 
     $.fn.selectRange = function (pos) {
@@ -726,8 +769,9 @@
             else if ((key >= 65 && key <= 90) || (key >= 97 && key <= 122)) {
                 $(this).eventManager($global_fsm_InputEventsEnum.TYPE_AZ, event);
             }
-            else if (key == 32) {
-                $(this).eventManager($global_fsm_InputEventsEnum.TYPE_SPACE, event);
+            //            space        comma       point         colon    semi-colon    question-mark
+            else if (key == 32 || key == 44 || key == 46 || key == 58 || key == 59 || key == 63){
+                $(this).eventManager($global_fsm_InputEventsEnum.TYPE_PUNCTUATION, event);
             }
             else if (key == 13) {
                 $(this).eventManager($global_fsm_InputEventsEnum.TYPE_ENTER, event);
