@@ -47,7 +47,7 @@
 
     translatorMap["HA"] = ["ሃ", "ሓ", "ሀ", "ሐ"];
     translatorMap["HE"] = ["ሄ", "ሔ"];
-    translatorMap["HI"] = ["ሂ ", "ሒ", "ህ", "ሕ"];
+    translatorMap["HI"] = ["ሂ", "ሒ", "ህ", "ሕ"];
     translatorMap["HO"] = ["ሆ", "ሖ"];
     translatorMap["HU"] = ["ሁ", "ሑ"];
     translatorMap["H"] = ["ህ", "ሕ"];
