@@ -1,20 +1,21 @@
 # AmharicTyper
 
-Please look at the practical demo page here
-[link](https://doulaize.github.io/AmharicTyper/).
+*Note:* Demo page
+[here](https://doulaize.github.io/AmharicTyper/).
 
-<h1>Amharic Typer</h1>
+***AmharicTyper*** is a Jquery plugin that implements an Amharic/Geez interpreter inside an input HTML element. 
 
-This is a Jquery plugin that implements an Amharic/Giz plugin for all the normal input. 
+It allows an user to write in fidels in Amharic or other Ethiopian languages.
 
-Allowing a user to write in fidels in amharic (or other Ethiopian languages) are sometimes hard to implement. 
-Some browsers plugins exist but they require some initial steps by the end user. With this plugin, the user can simply write phonetically and see its text change into fidels.
+With this plugin, the user can simply write phoneticallyusing the Western alphabet and see the interpretation into fidels.
 
 
-<h2>Main Features</h2>
-1. just add the class **amharic-typer** to your input, and you are good to go.
-2. If you want to display tradition Amharic punctuation, also add the class **amharic-punctuation**
-3. A dropdown will appear with the different possible fidels. SPACE, ENTER, a NUMBER or the ARROWS will help you chose the most appropriate option
+# How to use
+1. Just add the class **amharic-typer** to your input HTML element, and you are good to go. 
+> \<input class="amharic-typer">
+2. If you want to display traditional Amharic punctuation, add the class **amharic-punctuation** to your input element.
+> \<input class="amharic-typer amharic-punctuation">
+3. When the final users write in the input element, a dropdown will appear with the possible interpretations in fidels. Using the SPACE BAR, ENTER, a NUMBER or the ARROWS will select the desired fidels.
 
-<h2>Dependency</h2>
-_jQuery_
+# Dependency
+jQuery
