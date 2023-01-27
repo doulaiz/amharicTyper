@@ -38,3 +38,8 @@
     background: beige;
     color: brown;
 }
+
+.dropdown-backdrop {
+    z-index: 0;
+    position: static;
+}
