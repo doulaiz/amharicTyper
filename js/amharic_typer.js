@@ -759,10 +759,6 @@
             else if (key == 40) {
                 $(this).eventManager($global_fsm_InputEventsEnum.TYPE_DOWN_ARROW, event);
             }
-            // key right, left, ESC
-            else if (key == 37 || key == 39 || key == 27) {
-                $(this).eventManager($global_fsm_InputEventsEnum.TYPE_OTHER, event);
-            }
             else if (key >= 48 && key <= 57) {
                 $(this).eventManager($global_fsm_InputEventsEnum.TYPE_09, event);
             }
