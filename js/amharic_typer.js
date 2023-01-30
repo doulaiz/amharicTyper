@@ -1,6 +1,7 @@
 (function ($) {
-    const DEBUG = !!0;
-
+    // To remove excessive logging, just change theline to `const DEBUG = !!0;`
+    const DEBUG = !!1;
+    
     const consonants = ["B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z"];
     const vowels = ["A", "E", "I", "O", "U"];
 
@@ -384,7 +385,7 @@
                 return "ON_RECEIVE_FIELDS";
                 break;
             default:
-                if (DEBUG) error("Error in switch case " + e);
+                if (DEBUG) console.error("Error in switch case " + e);
                 return ""
         }
     }
@@ -408,14 +409,14 @@
                 $(this).actionOnStateWritingShow(fsm_event, html_event);
                 break;
             default:
-                if (DEBUG) log("ERROR in the FSM");
+                if (DEBUG) console.log("ERROR in the FSM");
         }
     };
 
 
     $.fn.actionOnStateIdle = function (fsm_event, event) {
 
-        if (DEBUG) log("received event " + printable(fsm_event) + " on state idle");
+        if (DEBUG) console.log("received event " + printable(fsm_event) + " on state idle");
 
         let k = (null != event) && (event.type == "keydown") ? (event.keyCode || event.charCode): "";
 
@@ -448,7 +449,7 @@
 
             default:
                 $(this).data("$fsm_string_processed", "");
-                if (DEBUG) error("Error in the FSM. untreated event " + printable(fsm_event) + " in state IDLE");
+                if (DEBUG) console.error("Error in the FSM. untreated event " + printable(fsm_event) + " in state IDLE");
                 break
 
         }
@@ -456,7 +457,7 @@
 
     $.fn.actionOnStateWritingNoShow = function (fsm_event, event) {
 
-        if (DEBUG) log("received event " + printable(fsm_event) + " on state Writing No Show");
+        if (DEBUG) console.log("received event " + printable(fsm_event) + " on state Writing No Show");
 
         const k = (null != event && event.type == "keydown") ? (event.keyCode || event.charCode) : "";
 
@@ -502,14 +503,14 @@
             default:
                 $(this).data("$fsm_state", $global_fsm_statesEnum.STATE_IDLE);
                 $(this).data("$fsm_string_processed", "");
-                if (DEBUG) error("Error in the FSM. untreated event " + printable(fsm_event) + " in state IDLE");
+                if (DEBUG) console.error("Error in the FSM. untreated event " + printable(fsm_event) + " in state IDLE");
                 break
         }
     };
 
     $.fn.actionOnStateWritingShow = function (fsm_event, event) {
 
-        if (DEBUG) log("received event " + printable(fsm_event) + " on state Writing Show");
+        if (DEBUG) console.log("received event " + printable(fsm_event) + " on state Writing Show");
 
         const k = (null != event && event.type == "keydown") ? (event.keyCode || event.charCode) : "";
 
@@ -571,7 +572,7 @@
                 break;
 
             case $global_fsm_InputEventsEnum.ON_RECEIVE_FIELDS:
-                if (DEBUG) error("Received fields while FSM was displaying data... whaaaat?");
+                if (DEBUG) console.error("Received fields while FSM was displaying data... whaaaat?");
                 break;
 
             case $global_fsm_InputEventsEnum.TYPE_OTHER:
@@ -584,7 +585,7 @@
                 break;
 
             default:
-                if (DEBUG) error("Error in the FSM. untreated event " + printable(fsm_event) + " in state IDLE");
+                if (DEBUG) console.error("Error in the FSM. untreated event " + printable(fsm_event) + " in state IDLE");
                 $(this).data("$fsm_state", $global_fsm_statesEnum.STATE_IDLE);
                 $(this).data("$fsm_string_processed", "");
                 this.hideDropdown();
@@ -595,20 +596,20 @@
 
     $.fn.updateFidelList = function () {
 
-        if (DEBUG) log("entering updateFidelList");
+        if (DEBUG) console.log("entering updateFidelList");
 
         if ($(this).data("$fsm_string_processed").length > 0) {
 
             let response = getFidels($(this).data("$fsm_string_processed"));
             $(this).data("$fsm_list_fidels", response);
-            if (DEBUG) log($(this).data("$fsm_list_fidels"));
+            if (DEBUG) console.log($(this).data("$fsm_list_fidels"));
             $(this).eventManager($global_fsm_InputEventsEnum.ON_RECEIVE_FIELDS, null)
         }
     };
 
 
     $.fn.showDropdown = function () {
-        if (DEBUG) log("show dropdown");
+        if (DEBUG) console.log("show dropdown");
         $(this).data("$fsm_list_fidels_selected_index", 0);
 
         let l = $(this).data("$fsm_list_fidels");
@@ -623,7 +624,7 @@
     };
 
     $.fn.hideDropdown = function () {
-        if (DEBUG) log("hide dropdown");
+        if (DEBUG) console.log("hide dropdown");
         $(this).data("$fsm_list_fidels_selected_index", 0);
 
         let l = $(this).data("$fsm_list_fidels");
@@ -643,7 +644,7 @@
             idx -= 1;
         }
         $(this).data("$fsm_list_fidels_selected_index", (l + idx) % l);
-        if (DEBUG) log("index at " + $(this).data("$fsm_list_fidels_selected_index"));
+        if (DEBUG) console.log("index at " + $(this).data("$fsm_list_fidels_selected_index"));
         this.highlightSelectionInDropdown();
     };
 
@@ -656,7 +657,7 @@
 
     $.fn.choseSelectedDropdownOption = function (punctuation) {
         this.writeInInput($(this).data("$fsm_list_fidels")[$(this).data("$fsm_list_fidels_selected_index")], punctuation);
-        if (DEBUG) log("punctuation/enter on dropdown")
+        if (DEBUG) console.log("punctuation/enter on dropdown")
     };
 
     $.fn.choseDropdownOption = function (index) {
@@ -664,7 +665,7 @@
             let idx = ($(this).data("$fsm_list_fidels").length < index ? $(this).data("$fsm_list_fidels").length - 1 : index - 1);
             this.writeInInput($(this).data("$fsm_list_fidels")[idx], "");
         }
-        if (DEBUG) log("Choose dropdown " + index)
+        if (DEBUG) console.log("Choose dropdown " + index)
     };
 
     $.fn.isPunctuationTranslated = function (){
@@ -712,7 +713,7 @@
     };
 
     $.fn.onDropdownClick = function () {
-        if (DEBUG) log("click on dropdown");
+        if (DEBUG) console.log("click on dropdown");
         let idx = this.data("idx");
         let $_fidel_input = this.parent().parent().siblings("input");
         $_fidel_input.choseDropdownOption(idx + 1);
