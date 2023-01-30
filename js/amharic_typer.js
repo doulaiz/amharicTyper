@@ -1,4 +1,5 @@
 (function ($) {
+    const DEBUG = !!0;
 
     const consonants = ["B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z"];
     const vowels = ["A", "E", "I", "O", "U"];
@@ -383,7 +384,7 @@
                 return "ON_RECEIVE_FIELDS";
                 break;
             default:
-                console.error("Error in switch case " + e);
+                if (DEBUG) error("Error in switch case " + e);
                 return ""
         }
     }
@@ -407,14 +408,14 @@
                 $(this).actionOnStateWritingShow(fsm_event, html_event);
                 break;
             default:
-                console.log("ERROR in the FSM");
+                if (DEBUG) log("ERROR in the FSM");
         }
     };
 
 
     $.fn.actionOnStateIdle = function (fsm_event, event) {
 
-        console.log("received event " + printable(fsm_event) + " on state idle");
+        if (DEBUG) log("received event " + printable(fsm_event) + " on state idle");
 
         let k = (null != event) && (event.type == "keydown") ? (event.keyCode || event.charCode): "";
 
@@ -447,7 +448,7 @@
 
             default:
                 $(this).data("$fsm_string_processed", "");
-                console.error("Error in the FSM. untreated event " + printable(fsm_event) + " in state IDLE");
+                if (DEBUG) error("Error in the FSM. untreated event " + printable(fsm_event) + " in state IDLE");
                 break
 
         }
@@ -455,7 +456,7 @@
 
     $.fn.actionOnStateWritingNoShow = function (fsm_event, event) {
 
-        console.log("received event " + printable(fsm_event) + " on state Writing No Show");
+        if (DEBUG) log("received event " + printable(fsm_event) + " on state Writing No Show");
 
         const k = (null != event && event.type == "keydown") ? (event.keyCode || event.charCode) : "";
 
@@ -501,14 +502,14 @@
             default:
                 $(this).data("$fsm_state", $global_fsm_statesEnum.STATE_IDLE);
                 $(this).data("$fsm_string_processed", "");
-                console.error("Error in the FSM. untreated event " + printable(fsm_event) + " in state IDLE");
+                if (DEBUG) error("Error in the FSM. untreated event " + printable(fsm_event) + " in state IDLE");
                 break
         }
     };
 
     $.fn.actionOnStateWritingShow = function (fsm_event, event) {
 
-        console.log("received event " + printable(fsm_event) + " on state Writing Show");
+        if (DEBUG) log("received event " + printable(fsm_event) + " on state Writing Show");
 
         const k = (null != event && event.type == "keydown") ? (event.keyCode || event.charCode) : "";
 
@@ -570,7 +571,7 @@
                 break;
 
             case $global_fsm_InputEventsEnum.ON_RECEIVE_FIELDS:
-                console.error("Received fields while FSM was displaying data... whaaaat?");
+                if (DEBUG) error("Received fields while FSM was displaying data... whaaaat?");
                 break;
 
             case $global_fsm_InputEventsEnum.TYPE_OTHER:
@@ -583,7 +584,7 @@
                 break;
 
             default:
-                console.error("Error in the FSM. untreated event " + printable(fsm_event) + " in state IDLE");
+                if (DEBUG) error("Error in the FSM. untreated event " + printable(fsm_event) + " in state IDLE");
                 $(this).data("$fsm_state", $global_fsm_statesEnum.STATE_IDLE);
                 $(this).data("$fsm_string_processed", "");
                 this.hideDropdown();
@@ -594,20 +595,20 @@
 
     $.fn.updateFidelList = function () {
 
-        console.log("entering updateFidelList");
+        if (DEBUG) log("entering updateFidelList");
 
         if ($(this).data("$fsm_string_processed").length > 0) {
 
             let response = getFidels($(this).data("$fsm_string_processed"));
             $(this).data("$fsm_list_fidels", response);
-            console.log($(this).data("$fsm_list_fidels"));
+            if (DEBUG) log($(this).data("$fsm_list_fidels"));
             $(this).eventManager($global_fsm_InputEventsEnum.ON_RECEIVE_FIELDS, null)
         }
     };
 
 
     $.fn.showDropdown = function () {
-        console.log("show dropdown");
+        if (DEBUG) log("show dropdown");
         $(this).data("$fsm_list_fidels_selected_index", 0);
 
         let l = $(this).data("$fsm_list_fidels");
@@ -622,7 +623,7 @@
     };
 
     $.fn.hideDropdown = function () {
-        console.log("hide dropdown");
+        if (DEBUG) log("hide dropdown");
         $(this).data("$fsm_list_fidels_selected_index", 0);
 
         let l = $(this).data("$fsm_list_fidels");
@@ -642,7 +643,7 @@
             idx -= 1;
         }
         $(this).data("$fsm_list_fidels_selected_index", (l + idx) % l);
-        console.log("index at " + $(this).data("$fsm_list_fidels_selected_index"));
+        if (DEBUG) log("index at " + $(this).data("$fsm_list_fidels_selected_index"));
         this.highlightSelectionInDropdown();
     };
 
@@ -655,7 +656,7 @@
 
     $.fn.choseSelectedDropdownOption = function (punctuation) {
         this.writeInInput($(this).data("$fsm_list_fidels")[$(this).data("$fsm_list_fidels_selected_index")], punctuation);
-        console.log("punctuation/enter on dropdown")
+        if (DEBUG) log("punctuation/enter on dropdown")
     };
 
     $.fn.choseDropdownOption = function (index) {
@@ -663,7 +664,7 @@
             let idx = ($(this).data("$fsm_list_fidels").length < index ? $(this).data("$fsm_list_fidels").length - 1 : index - 1);
             this.writeInInput($(this).data("$fsm_list_fidels")[idx], "");
         }
-        console.log("Choose dropdown " + index)
+        if (DEBUG) log("Choose dropdown " + index)
     };
 
     $.fn.isPunctuationTranslated = function (){
@@ -711,7 +712,7 @@
     };
 
     $.fn.onDropdownClick = function () {
-        console.log("click on dropdown");
+        if (DEBUG) log("click on dropdown");
         let idx = this.data("idx");
         let $_fidel_input = this.parent().parent().siblings("input");
         $_fidel_input.choseDropdownOption(idx + 1);
