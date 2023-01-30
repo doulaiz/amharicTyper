@@ -746,6 +746,9 @@
 
         $_fidelInput.on("keydown", function (event) {
             const key = event.keyCode;
+            
+            if (DEBUG) console.log('Event keydown')
+            if (DEBUG) console.log(event)
 
             if (key == 8) {
                 $(this).eventManager($global_fsm_InputEventsEnum.TYPE_BACKSPACE, event);
