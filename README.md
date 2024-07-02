@@ -1,7 +1,7 @@
 # AmharicTyper
 
 *Note:* Demo page
-[here](https://doulaize.github.io/amharicTyper/).
+[here](https://doulaiz.github.io/amharicTyper/).
 
 ***AmharicTyper*** is a Jquery plugin that implements an Amharic/Geez interpreter inside an input HTML element. 
 
