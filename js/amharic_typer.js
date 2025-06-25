@@ -781,6 +781,19 @@
             $(this).eventManager($global_fsm_InputEventsEnum.ON_PASTE, event)
         });
 
+        $_fidelInput.on("input", function (event) {
+            // On input event (mobile/desktop), update the fidel list if input changed
+            // This ensures compatibility with mobile virtual keyboards
+            if ($(this).data("$fsm_state") !== $global_fsm_statesEnum.STATE_IDLE) {
+                this.updateFidelList();
+            }
+        });
+
+        $_fidelInput.on("touchend", function (event) {
+            // Placeholder for mobile-specific logic if needed
+            // For example, you could force update or handle selection
+            // this.updateFidelList();
+        });
 
     });
 
