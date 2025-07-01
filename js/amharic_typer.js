@@ -509,7 +509,6 @@
     };
 
     $.fn.actionOnStateWritingShow = function (fsm_event, event) {
-
         if (DEBUG) console.log("received event " + printable(fsm_event) + " on state Writing Show");
 
         const k = (null != event && event.type == "keydown") ? (event.keyCode || event.charCode) : "";
@@ -593,9 +592,7 @@
         }
     };
 
-
     $.fn.updateFidelList = function () {
-
         if (DEBUG) console.log("entering updateFidelList");
 
         if ($(this).data("$fsm_string_processed").length > 0) {
@@ -669,12 +666,10 @@
     };
 
     $.fn.isPunctuationTranslated = function (){
-
         return $(this).hasClass("amharic-punctuation");
     };
 
     $.fn.getPunctuation = function (pct){
-
         if (this.isPunctuationTranslated() && pct in translatorMap)
             return translatorMap[pct];
 
@@ -782,19 +777,9 @@
         });
 
         $_fidelInput.on("input", function (event) {
-            // On input event (mobile/desktop), update the fidel list if input changed
-            // This ensures compatibility with mobile virtual keyboards
-            if ($(this).data("$fsm_state") !== $global_fsm_statesEnum.STATE_IDLE) {
-                this.updateFidelList();
-            }
+            if (DEBUG) console.log("input event detected");
+            $(this).eventManager($global_fsm_InputEventsEnum.ON_RECEIVE_FIELDS, event);
         });
-
-        $_fidelInput.on("touchend", function (event) {
-            // Placeholder for mobile-specific logic if needed
-            // For example, you could force update or handle selection
-            // this.updateFidelList();
-        });
-
     });
 
 })(jQuery);
