@@ -716,6 +716,39 @@
         $_fidel_input.focus();
     };
 
+   function input_worker(event) {
+      const key = event.keyCode;
+      
+      if (DEBUG) console.log('Event keydown')
+      if (DEBUG) console.log(event)
+
+      if (key == 8) {
+            $(this).eventManager($global_fsm_InputEventsEnum.TYPE_BACKSPACE, event);
+      }
+      else if (key == 38) {
+            $(this).eventManager($global_fsm_InputEventsEnum.TYPE_UP_ARROW, event);
+      }
+      else if (key == 40) {
+            $(this).eventManager($global_fsm_InputEventsEnum.TYPE_DOWN_ARROW, event);
+      }
+      else if (key >= 48 && key <= 57) {
+            $(this).eventManager($global_fsm_InputEventsEnum.TYPE_09, event);
+      }
+      else if ((key >= 65 && key <= 90) || (key >= 97 && key <= 122)) {
+            $(this).eventManager($global_fsm_InputEventsEnum.TYPE_AZ, event);
+      }
+      //            space        comma       point         colon    semi-colon    question-mark
+      else if (key == 32 || key == 44 || key == 46 || key == 58 || key == 59 || key == 63){
+            $(this).eventManager($global_fsm_InputEventsEnum.TYPE_PUNCTUATION, event);
+      }
+      else if (key == 13) {
+            $(this).eventManager($global_fsm_InputEventsEnum.TYPE_ENTER, event);
+      }
+      else {
+            $(this).eventManager($global_fsm_InputEventsEnum.TYPE_OTHER, event);
+      }
+   }
+
     $(function () {
 
         let $_fidelInput = $("input.amharic-typer");
@@ -739,38 +772,9 @@
             $(this).eventManager($global_fsm_InputEventsEnum.ON_FOCUS, event);
         });
 
-        $_fidelInput.on("keydown", function (event) {
-            const key = event.keyCode;
-            
-            if (DEBUG) console.log('Event keydown')
-            if (DEBUG) console.log(event)
-
-            if (key == 8) {
-                $(this).eventManager($global_fsm_InputEventsEnum.TYPE_BACKSPACE, event);
-            }
-            else if (key == 38) {
-                $(this).eventManager($global_fsm_InputEventsEnum.TYPE_UP_ARROW, event);
-            }
-            else if (key == 40) {
-                $(this).eventManager($global_fsm_InputEventsEnum.TYPE_DOWN_ARROW, event);
-            }
-            else if (key >= 48 && key <= 57) {
-                $(this).eventManager($global_fsm_InputEventsEnum.TYPE_09, event);
-            }
-            else if ((key >= 65 && key <= 90) || (key >= 97 && key <= 122)) {
-                $(this).eventManager($global_fsm_InputEventsEnum.TYPE_AZ, event);
-            }
-            //            space        comma       point         colon    semi-colon    question-mark
-            else if (key == 32 || key == 44 || key == 46 || key == 58 || key == 59 || key == 63){
-                $(this).eventManager($global_fsm_InputEventsEnum.TYPE_PUNCTUATION, event);
-            }
-            else if (key == 13) {
-                $(this).eventManager($global_fsm_InputEventsEnum.TYPE_ENTER, event);
-            }
-            else {
-                $(this).eventManager($global_fsm_InputEventsEnum.TYPE_OTHER, event);
-            }
-        });
+      $_fidelInput.on("keydown", function(event) {
+          input_worker.call(this, event);
+      });
 
         $_fidelInput.on("paste", function () {
             $(this).eventManager($global_fsm_InputEventsEnum.ON_PASTE, event)
@@ -778,7 +782,11 @@
 
         $_fidelInput.on("input", function (event) {
             if (DEBUG) console.log("input event detected");
-            $(this).eventManager($global_fsm_InputEventsEnum.ON_RECEIVE_FIELDS, event);
+            let value = event.data;
+            for (let i = 0; i < value.length; i++) {
+               let fakeEvent = { keyCode: value.charCodeAt(i), type: "keydown" };
+               input_worker.call(this, fakeEvent);
+            }
         });
     });
 
